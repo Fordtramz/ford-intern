@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FORD — Security Intern 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --pink: #F43F8E;
+  --pink-dim: rgba(244,63,142,0.12);
+  --bg: #080809;
+  --surface: #111114;
+  --surface2: #18181c;
+  --border: #222226;
+  --text: #f5f5f7;
+  --muted: #52525b;
+  --muted2: #71717a;
+  --green: #34d399;
+  --purple: #a78bfa;
+  --yellow: #fbbf24;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;cursor:none}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+/* cursor */
+.cur{position:fixed;width:10px;height:10px;background:var(--pink);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform .15s}
+.cur2{position:fixed;width:32px;height:32px;border:1px solid rgba(244,63,142,.35);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:all .22s ease}
+a,.skill-item,.goal-item,.check-row,.tab-btn,.wo-card{cursor:none}
+
+/* particles */
+#cvs{position:fixed;inset:0;pointer-events:none;z-index:0}
+
+/* nav */
+nav{position:fixed;top:0;left:0;right:0;padding:26px 48px;display:flex;justify-content:space-between;align-items:center;z-index:100;backdrop-filter:blur(12px);background:rgba(8,8,9,.6);border-bottom:1px solid rgba(255,255,255,.04)}
+.nl{font-size:12px;font-weight:800;letter-spacing:3px;text-transform:uppercase}
+.nm{display:flex;gap:0;font-size:12px;color:var(--muted2)}
+.nm a{color:var(--muted2);text-decoration:none;padding:4px 10px;transition:color .2s}
+.nm a:hover{color:var(--text)}
+.nm a:not(:last-child)::after{content:','}
+.ns{font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--muted2)}
+.ns span{color:var(--green);animation:blink 2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+
+/* hero */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:0 48px;position:relative;z-index:1;overflow:hidden}
+.h-tag{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--muted2);margin-bottom:20px;opacity:0;animation:fiu .7s .3s forwards}
+.h-name{font-size:clamp(72px,13vw,180px);font-weight:900;line-height:.88;letter-spacing:-4px;text-transform:uppercase;opacity:0;animation:fiu .7s .5s forwards}
+.h-name .p{color:var(--pink)}
+.h-sub{margin-top:36px;display:flex;align-items:center;gap:28px;flex-wrap:wrap;opacity:0;animation:fiu .7s .7s forwards}
+.h-desc{font-size:14px;color:var(--muted2);max-width:280px;line-height:1.7}
+.h-pill{display:inline-flex;align-items:center;gap:7px;background:var(--pink-dim);border:1px solid rgba(244,63,142,.2);color:var(--pink);padding:9px 18px;border-radius:100px;font-size:12px;font-weight:600;white-space:nowrap}
+.h-scroll{position:absolute;bottom:36px;left:48px;display:flex;align-items:center;gap:12px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);opacity:0;animation:fiu .7s 1s forwards}
+.h-scroll::before{content:'';width:36px;height:1px;background:var(--muted)}
+.h-yr{position:absolute;bottom:36px;right:48px;font-size:11px;letter-spacing:2px;color:var(--muted);opacity:0;animation:fiu .7s 1s forwards}
+@keyframes fiu{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+
+/* section layout */
+.sec{position:relative;z-index:1;padding:110px 48px;display:grid;grid-template-columns:180px 1fr;gap:72px;border-top:1px solid var(--border)}
+.sn{font-size:11px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;padding-top:4px}
+.sl{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--pink);font-weight:700;margin-bottom:16px}
+.sl::before{content:'* '}
+.st{font-size:clamp(32px,5vw,64px);font-weight:900;line-height:.95;letter-spacing:-2px;text-transform:uppercase;margin-bottom:28px}
+.st .p{color:var(--pink)}
+.sb{font-size:15px;color:var(--muted2);line-height:1.75;max-width:500px}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(24px);transition:opacity .65s ease,transform .65s ease}
+.rv.on{opacity:1;transform:none}
+
+/* countdown big */
+.cd{display:flex;align-items:baseline;gap:14px;margin-top:44px}
+.cdn{font-size:clamp(72px,10vw,140px);font-weight:900;line-height:1;letter-spacing:-4px;color:var(--pink);font-variant-numeric:tabular-nums;animation:pulse 3s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.65}}
+.cdu{font-size:16px;color:var(--muted2);letter-spacing:2px;text-transform:uppercase}
+.cdd{margin-top:10px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
+
+/* stats row */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:16px;overflow:hidden;margin-top:36px}
+.stat{background:var(--bg);padding:28px 20px;transition:background .2s}
+.stat:hover{background:var(--surface)}
+.stat .sv{font-size:32px;font-weight:900;letter-spacing:-1px;color:var(--pink)}
+.stat .sl2{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:4px}
+
+/* progress card */
+.prog-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:20px 24px;margin-top:12px;transition:border-color .2s}
+.prog-card:hover{border-color:rgba(244,63,142,.2)}
+.prog-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.prog-title{font-size:13px;font-weight:600}
+.prog-pct{font-size:12px;color:var(--muted2)}
+.prog-bar{height:4px;background:var(--border);border-radius:2px;overflow:hidden}
+.prog-fill{height:100%;background:linear-gradient(90deg,var(--pink),var(--purple));border-radius:2px;transition:width .8s cubic-bezier(.4,0,.2,1);position:relative;overflow:hidden}
+.prog-fill::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent);animation:sh 1.8s infinite}
+@keyframes sh{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+
+/* checklist */
+.check-group{margin-top:28px}
+.check-phase{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin:24px 0 10px;font-weight:600}
+.check-phase:first-child{margin-top:0}
+.check-row{display:flex;align-items:flex-start;gap:12px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.04);transition:padding-left .2s}
+.check-row:hover{padding-left:6px}
+.check-row input[type=checkbox]{appearance:none;-webkit-appearance:none;width:17px;height:17px;border:1.5px solid var(--border);border-radius:4px;background:transparent;flex-shrink:0;margin-top:2px;cursor:none;position:relative;transition:all .2s}
+.check-row input:hover{border-color:var(--pink)}
+.check-row input:checked{background:var(--pink);border-color:var(--pink)}
+.check-row input:checked::after{content:'';position:absolute;left:4px;top:1px;width:5px;height:9px;border:solid white;border-width:0 2px 2px 0;transform:rotate(45deg)}
+.check-row.done .cl{text-decoration:line-through;color:var(--muted)}
+.cl{font-size:14px;line-height:1.5}
+
+/* skill list */
+.skill-list{margin-top:28px}
+.skill-item{display:flex;justify-content:space-between;align-items:center;padding:18px 0;border-bottom:1px solid var(--border);font-size:18px;font-weight:700;letter-spacing:-.3px;transition:color .2s,padding-left .2s}
+.skill-item:hover{color:var(--pink);padding-left:10px}
+.sk{font-size:11px;font-weight:500;letter-spacing:1px;color:var(--muted);text-transform:uppercase}
+
+/* exercise image grid */
+.ex-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:4px}
+.ex-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:transform .2s,border-color .2s,box-shadow .2s}
+.ex-card:hover{transform:translateY(-4px);border-color:rgba(244,63,142,.35);box-shadow:0 8px 32px rgba(244,63,142,.12)}
+.ex-thumb{position:relative;overflow:hidden;height:170px}
+.ex-thumb img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;transition:transform .3s}
+.ex-card:hover .ex-thumb img{transform:scale(1.05)}
+.ex-thumb-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.7) 0%,transparent 50%);pointer-events:none}
+.ex-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:44px;height:44px;background:rgba(244,63,142,.9);border-radius:50%;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .2s;text-decoration:none}
+.ex-play::after{content:'▶';color:white;font-size:14px;margin-left:2px}
+.ex-card:hover .ex-play{opacity:1}
+.ex-info{padding:14px 16px}
+.ex-name{font-size:13px;font-weight:700;margin-bottom:5px;color:var(--text)}
+.ex-desc{font-size:11px;color:var(--muted2);line-height:1.6;margin-bottom:10px}
+.ex-link{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:600;color:var(--pink);text-decoration:none;letter-spacing:.5px;text-transform:uppercase;transition:opacity .15s}
+.ex-link:hover{opacity:.75;text-decoration:none}
+.ex-link::before{content:'▶';font-size:9px}
+@media(max-width:900px){.ex-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.ex-grid{grid-template-columns:1fr}}
+
+/* tabs */
+.tabs{display:flex;gap:0;border-bottom:1px solid var(--border);margin-bottom:20px;margin-top:28px;overflow-x:auto}
+.tab-btn{background:none;border:none;color:var(--muted2);font-size:13px;font-weight:600;padding:10px 18px;border-bottom:2px solid transparent;margin-bottom:-1px;transition:color .2s,border-color .2s;white-space:nowrap}
+.tab-btn.act{color:var(--pink);border-bottom-color:var(--pink)}
+.tab-panel{display:none}
+.tab-panel.act{display:block}
+.ex-list{display:flex;flex-direction:column;gap:6px}
+.ex{display:flex;align-items:center;gap:12px;padding:12px 16px;background:var(--surface);border-radius:10px;font-size:14px;transition:background .2s,transform .2s}
+.ex:hover{background:var(--surface2);transform:translateX(4px)}
+.ex-n{font-size:11px;font-weight:700;color:var(--pink);width:18px;flex-shrink:0}
+
+/* week grid */
+.week-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin-top:24px}
+.wo-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px 8px;text-align:center;border-top:3px solid var(--border);transition:transform .2s,border-color .2s}
+.wo-card:hover{transform:translateY(-4px)}
+.wo-card.up{border-top-color:var(--pink)}
+.wo-card.card{border-top-color:var(--green)}
+.wo-card.rec{border-top-color:var(--yellow)}
+.wo-card.lo{border-top-color:var(--purple)}
+.wo-card.rst{border-top-color:var(--border);opacity:.5}
+.wday{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);margin-bottom:6px}
+.wtype{font-size:11px;font-weight:600;color:var(--text)}
+.wico{font-size:20px;margin-bottom:6px;display:block}
+
+/* nutrition grid */
+.nut-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:20px}
+.nut{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px 10px;text-align:center;transition:border-color .2s,transform .2s}
+.nut:hover{border-color:rgba(244,63,142,.3);transform:translateY(-2px)}
+.nico{font-size:20px;display:block;margin-bottom:8px}
+.nval{font-size:15px;font-weight:800;margin-bottom:3px}
+.nlbl{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--muted)}
+
+/* timeline */
+.timeline{border-left:1px solid var(--border);padding-left:28px;margin-left:8px;margin-top:24px;display:flex;flex-direction:column;gap:18px}
+.trow{position:relative}
+.trow::before{content:'';position:absolute;left:-35px;top:6px;width:10px;height:10px;background:var(--pink);border-radius:50%;border:2px solid var(--bg)}
+.ttime{font-size:12px;font-weight:700;color:var(--pink);letter-spacing:1px;font-variant-numeric:tabular-nums;margin-bottom:2px}
+.tact{font-size:14px;font-weight:600}
+.tdesc{font-size:12px;color:var(--muted2);margin-top:2px}
+
+/* roadmap */
+.road-phase{border:1px solid var(--border);border-left:3px solid var(--pink);border-radius:14px;padding:20px 24px;margin-top:14px;background:var(--surface);transition:transform .2s,border-color .2s}
+.road-phase:hover{transform:translateX(4px);border-color:rgba(244,63,142,.4)}
+.road-phase.g{border-left-color:var(--green)}
+.road-phase.y{border-left-color:var(--yellow)}
+.road-phase.pu{border-left-color:var(--purple)}
+.rh{font-size:13px;font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.ri{font-size:13px;color:var(--muted2);margin:4px 0;display:flex;align-items:flex-start;gap:8px}
+.ri::before{content:'—';color:var(--muted);flex-shrink:0}
+
+/* rules */
+.rule-list{display:flex;flex-direction:column;gap:12px;margin-top:24px}
+.rule{display:flex;align-items:flex-start;gap:14px;padding:18px 20px;background:var(--surface);border:1px solid var(--border);border-radius:12px;font-size:14px;transition:border-color .2s,transform .2s}
+.rule:hover{border-color:rgba(244,63,142,.25);transform:translateX(4px)}
+.rule-n{font-size:12px;font-weight:700;color:var(--pink);min-width:28px}
+.rule-t{font-weight:600;margin-bottom:2px}
+.rule-s{font-size:12px;color:var(--muted2)}
+
+/* footer */
+.footer{position:relative;z-index:1;padding:120px 48px 80px;border-top:1px solid var(--border);text-align:center;overflow:hidden}
+.fl{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--muted2);margin-bottom:24px}
+.fl::before{content:'* ';color:var(--pink)}
+.fb{font-size:clamp(48px,9vw,130px);font-weight:900;letter-spacing:-3px;text-transform:uppercase;line-height:.9;background:linear-gradient(135deg,var(--text) 30%,var(--pink) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:44px}
+.fi{font-size:11px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-top:60px}
+
+@media(max-width:900px){
+  nav{padding:18px 24px}.nm{display:none}
+  .hero,.sec,.footer{padding-left:24px;padding-right:24px}
+  .h-name{font-size:56px;letter-spacing:-2px}
+  .sec{grid-template-columns:1fr;gap:8px;padding-top:72px}
+  .sn{display:none}
+  .week-grid{grid-template-columns:repeat(4,1fr)}
+  .nut-grid{grid-template-columns:repeat(3,1fr)}
+  .stats{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+<div class="cur" id="c1"></div>
+<div class="cur2" id="c2"></div>
+<canvas id="cvs"></canvas>
+
+<!-- NAV -->
+<nav>
+  <div class="nl">Ford</div>
+  <div class="nm">
+    <a href="#prep">Prep</a>
+    <a href="#schedule">Schedule</a>
+    <a href="#skills">Skills</a>
+    <a href="#fitness">Fitness</a>
+    <a href="#roadmap">Roadmap</a>
+  </div>
+  <div class="ns"><span>●</span>Starting June 4, 2026</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="h-tag">Security Intern · ThaiBev / T.C.C. Technology · 2026</div>
+  <div class="h-name">FORD<br><span class="p">INTERN</span></div>
+  <div class="h-sub">
+    <p class="h-desc">Cybersecurity · Security Engineering · Cloud Security · DevSecOps</p>
+    <div class="h-pill">📍 Silom Edge, Bangkok</div>
+  </div>
+  <div class="h-scroll">Scroll</div>
+  <div class="h-yr">2026</div>
+</section>
+
+<!-- 01 ABOUT -->
+<section class="sec" id="about">
+  <div class="sn">( 01 )</div>
+  <div>
+    <div class="sl rv">About</div>
+    <div class="st rv">THE<br><span class="p">MISSION.</span></div>
+    <p class="sb rv">นักศึกษาปี 4 เริ่มฝึกงาน 4 มิ.ย. ถึง 31 ก.ค. 2026 — เดินทางจาก The Tree Rio บางอ้อ ไป Silom Edge ทุกวันจันทร์ถึงศุกร์ 09:00–17:00</p>
+    <div class="cd rv">
+      <div>
+        <div class="cdn" id="cd">—</div>
+        <div class="cdd">วันจนถึงวันแรก · 4 มิถุนายน 2026</div>
+      </div>
+    </div>
+    <div class="stats rv">
+      <div class="stat"><div class="sv">8</div><div class="sl2">สัปดาห์</div></div>
+      <div class="stat"><div class="sv" id="wdays">—</div><div class="sl2">วันทำงาน</div></div>
+      <div class="stat"><div class="sv">09–17</div><div class="sl2">จ–ศ</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 PREP CHECKLIST -->
+<section class="sec" id="prep">
+  <div class="sn">( 02 )</div>
+  <div>
+    <div class="sl rv">Pre-Internship</div>
+    <div class="st rv">PREP<br><span class="p">CHECKLIST.</span></div>
+    <div class="prog-card rv">
+      <div class="prog-row"><span class="prog-title">ความคืบหน้า</span><span class="prog-pct" id="prepPct">0/18</span></div>
+      <div class="prog-bar"><div class="prog-fill" id="prepFill" style="width:0%"></div></div>
+    </div>
+    <div class="check-group rv" data-key="prep">
+      <div class="check-phase">Phase 1 — Terminal + Git</div>
+      <label class="check-row"><input type="checkbox" data-id="p1-1"><span class="cl">Terminal basics: ls, cd, pwd, mkdir, cp, mv, rm, cat, grep, find, chmod</span></label>
+      <label class="check-row"><input type="checkbox" data-id="p1-2"><span class="cl">macOS terminal: iTerm2, zsh shell basics</span></label>
+      <label class="check-row"><input type="checkbox" data-id="p1-3"><span class="cl">Git: init, add, commit, push, pull, clone, status</span></label>
+      <label class="check-row"><input type="checkbox" data-id="p1-4"><span class="cl">GitHub: สร้าง repo, push โปรเจกต์</span></label>
+      <label class="check-row"><input type="checkbox" data-id="p1-5"><span class="cl">Homebrew: ติดตั้ง, brew install, brew list</span></label>
+      <label class="check-row"><input type="checkbox" data-id="p1-6"><span class="cl">VS Code: Python, GitLens, Remote-SSH</span></label>
+      <div class="check-phase">Phase 2 — Networking + Security</div>
+      <label class="check-row"><input type="checkbox" data-id="p2-1"><span class="cl">TCP/IP model: 4 layers, port 80, 443, 22, 3389</span></label>
+      <label class="check-row"><input type="checkbox" data-id="p2-2"><span class="cl">DNS: nslookup, dig บน terminal</span></label>
+      <label class="check-row"><input type="checkbox" data-id="p2-3"><span class="cl">Firewall: inbound/outbound, stateful vs stateless</span></label>
+      <label class="check-row"><input type="checkbox" data-id="p2-4"><span class="cl">OWASP Top 10: SQLi, XSS, IDOR</span></label>
+      <label class="check-row"><input type="checkbox" data-id="p2-5"><span class="cl">Wireshark: filter tcp, http, dns</span></label>
+      <label class="check-row"><input type="checkbox" data-id="p2-6"><span class="cl">Python: script อ่านไฟล์, loop, function</span></label>
+      <div class="check-phase">Phase 3 — เตรียมตัว + พัก</div>
+      <label class="check-row"><input type="checkbox" data-id="p3-1"><span class="cl">ทบทวน SQL Injection project</span></label>
+      <label class="check-row"><input type="checkbox" data-id="p3-2"><span class="cl">Obsidian vault ใหม่ "Internship"</span></label>
+      <label class="check-row"><input type="checkbox" data-id="p3-3"><span class="cl">ตั้งค่า MacBook workspace</span></label>
+      <label class="check-row"><input type="checkbox" data-id="p3-4"><span class="cl">จด 3 คำถามไว้ถามพี่เลี้ยง</span></label>
+      <label class="check-row"><input type="checkbox" data-id="p3-5"><span class="cl">เตรียม outfit, เส้นทาง, เวลาเดินทาง</span></label>
+      <label class="check-row"><input type="checkbox" data-id="p3-6"><span class="cl">3 มิ.ย. — พักผ่อน นอน ≥ 8 ชม.</span></label>
+    </div>
+  </div>
+</section>
+
+<!-- 03 DAILY SCHEDULE -->
+<section class="sec" id="schedule">
+  <div class="sn">( 03 )</div>
+  <div>
+    <div class="sl rv">Daily Life</div>
+    <div class="st rv">DAILY<br><span class="p">SCHEDULE.</span></div>
+    <div class="tabs rv" id="schedTabs">
+      <button class="tab-btn act" data-t="work">วันทำงาน จ-ศ</button>
+      <button class="tab-btn" data-t="sat">เสาร์</button>
+      <button class="tab-btn" data-t="sun">อาทิตย์</button>
+    </div>
+    <div class="tab-panel act" id="tw">
+      <div class="timeline">
+        <div class="trow rv"><div class="ttime">06:15</div><div class="tact">ตื่น</div></div>
+        <div class="trow rv"><div class="ttime">06:15–07:00</div><div class="tact">อาบน้ำ · แต่งตัว · อาหารเช้า</div><div class="tdesc">โปรตีนก่อน — ไข่, นม, โยเกิร์ต</div></div>
+        <div class="trow rv"><div class="ttime">07:00–08:30</div><div class="tact">🚇 เดินทาง · The Tree Rio → Silom Edge</div><div class="tdesc">ฟัง podcast security</div></div>
+        <div class="trow rv"><div class="ttime">09:00–12:00</div><div class="tact">🏢 ฝึกงาน รอบเช้า</div><div class="tdesc">Observe + งานที่ได้รับมอบหมาย</div></div>
+        <div class="trow rv"><div class="ttime">12:00–13:00</div><div class="tact">🍱 พักกลางวัน</div><div class="tdesc">เดินสั้นๆ ห้ามดู screen ตลอด</div></div>
+        <div class="trow rv"><div class="ttime">13:00–17:00</div><div class="tact">🏢 ฝึกงาน รอบบ่าย</div><div class="tdesc">จดบันทึก tool + คำถามพี่เลี้ยง</div></div>
+        <div class="trow rv"><div class="ttime">17:00–18:15</div><div class="tact">🚇 เดินทางกลับ</div><div class="tdesc">ปิดสมองงาน ฟังเพลง</div></div>
+        <div class="trow rv"><div class="ttime">18:15–19:15</div><div class="tact">🏋️ ออกกำลังกาย</div><div class="tdesc">ตาม Weekly Plan — ถ้าเหนื่อยมาก → walking 20 นาที</div></div>
+        <div class="trow rv"><div class="ttime">19:15–20:00</div><div class="tact">🍽️ อาหารเย็น</div><div class="tdesc">โปรตีน + คาร์บ ห้ามข้ามมื้อ</div></div>
+        <div class="trow rv"><div class="ttime">20:00–21:00</div><div class="tact">📚 Security Learning <span style="color:var(--pink);font-size:12px;">อ.+พฤ. เท่านั้น</span></div><div class="tdesc">จ./พ./ศ. = พักจริงๆ ห้าม grind</div></div>
+        <div class="trow rv"><div class="ttime">21:00–22:00</div><div class="tact">🌙 Wind down · Daily Log</div><div class="tdesc">ทำอะไร เรียนอะไร คำถามพรุ่งนี้</div></div>
+        <div class="trow rv"><div class="ttime">22:30</div><div class="tact">😴 นอน ≥ 7.5 ชม.</div><div class="tdesc">non-negotiable</div></div>
+      </div>
+    </div>
+    <div class="tab-panel" id="tsat">
+      <div class="timeline">
+        <div class="trow rv"><div class="ttime">08:00</div><div class="tact">ตื่น สบายๆ</div></div>
+        <div class="trow rv"><div class="ttime">09:30–11:00</div><div class="tact">🦵 Lower Rehab + Cardio</div><div class="tdesc">Knee-friendly เท่านั้น</div></div>
+        <div class="trow rv"><div class="ttime">11:00–17:00</div><div class="tact">🎮 เวลาส่วนตัว</div><div class="tdesc">เพื่อน ครอบครัว ห้ามเรียน</div></div>
+        <div class="trow rv"><div class="ttime">22:30</div><div class="tact">😴 นอน</div></div>
+      </div>
+    </div>
+    <div class="tab-panel" id="tsun">
+      <div class="timeline">
+        <div class="trow rv"><div class="ttime">08:00</div><div class="tact">ตื่น Full Rest</div></div>
+        <div class="trow rv"><div class="ttime">17:00–18:00</div><div class="tact">📓 Weekly Review</div><div class="tdesc">ทบทวนสัปดาห์ เตรียมสัปดาห์หน้า</div></div>
+        <div class="trow rv"><div class="ttime">18:00–22:00</div><div class="tact">🎮 ชาร์จพลัง</div></div>
+        <div class="trow rv"><div class="ttime">22:30</div><div class="tact">😴 นอน เตรียมวันจันทร์</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 SKILLS -->
+<section class="sec" id="skills">
+  <div class="sn">( 04 )</div>
+  <div>
+    <div class="sl rv">Tech Stack</div>
+    <div class="st rv">SKILLS<br><span class="p">& TOOLS.</span></div>
+    <div class="skill-list rv">
+      <div class="skill-item">Terminal & Linux<span class="sk">Foundation</span></div>
+      <div class="skill-item">Git & GitHub<span class="sk">Version Control</span></div>
+      <div class="skill-item">TCP/IP · DNS · Firewall<span class="sk">Networking</span></div>
+      <div class="skill-item">OWASP Top 10<span class="sk">Web Security</span></div>
+      <div class="skill-item">Wireshark · nmap · dig<span class="sk">Security Tools</span></div>
+      <div class="skill-item">Python<span class="sk">Scripting</span></div>
+      <div class="skill-item">VS Code · Claude Code<span class="sk">Dev Environment</span></div>
+      <div class="skill-item">oh-my-zsh · Homebrew<span class="sk">macOS Mastery</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 FITNESS -->
+<section class="sec" id="fitness">
+  <div class="sn">( 05 )</div>
+  <div>
+    <div class="sl rv">Fitness System</div>
+    <div class="st rv">BODY<br><span class="p">GOALS.</span></div>
+    <p class="sb rv">79.4 กก. → 75–77 กก. ใน 8 สัปดาห์ · เข่าซ้ายมีปัญหา ห้าม Squat หนัก, Jump, Sprint</p>
+
+    <div class="week-grid rv">
+      <div class="wo-card up"><span class="wico">🏋️</span><div class="wday">จันทร์</div><div class="wtype">Upper A</div></div>
+      <div class="wo-card card"><span class="wico">🚴</span><div class="wday">อังคาร</div><div class="wtype">Cardio</div></div>
+      <div class="wo-card up"><span class="wico">🏋️</span><div class="wday">พุธ</div><div class="wtype">Upper B</div></div>
+      <div class="wo-card rec"><span class="wico">🚶</span><div class="wday">พฤหัส</div><div class="wtype">Recovery</div></div>
+      <div class="wo-card up"><span class="wico">🏋️</span><div class="wday">ศุกร์</div><div class="wtype">Upper C</div></div>
+      <div class="wo-card lo"><span class="wico">🦵</span><div class="wday">เสาร์</div><div class="wtype">Lower Rehab</div></div>
+      <div class="wo-card rst"><span class="wico">😴</span><div class="wday">อาทิตย์</div><div class="wtype">Rest</div></div>
+    </div>
+
+    <div class="tabs rv" id="woTabs" style="margin-top:32px">
+      <button class="tab-btn act" data-w="A">Upper A</button>
+      <button class="tab-btn" data-w="B">Upper B</button>
+      <button class="tab-btn" data-w="C">Upper C</button>
+      <button class="tab-btn" data-w="L">Lower Rehab</button>
+    </div>
+    <div class="tab-panel act" id="wA">
+      <div class="ex-grid">
+        <div class="ex-card rv"><div class="ex-thumb"><img src="https://img.youtube.com/vi/-iWjdKWNpNg/hqdefault.jpg" alt="Incline Dumbbell Press"><div class="ex-thumb-overlay"></div><a class="ex-play" href="https://www.youtube.com/watch?v=-iWjdKWNpNg" target="_blank"></a></div><div class="ex-info"><div class="ex-name">Incline Dumbbell Press</div><div class="ex-desc">นอนบนม้านั่งเอียง 30-45° กดดัมเบลขึ้นตรง บีบอกบน ฝึก Upper Chest</div><a class="ex-link" href="https://www.youtube.com/watch?v=-iWjdKWNpNg" target="_blank">ดูวิดีโอ Jeff Nippard</a></div></div>
+        <div class="ex-card rv"><div class="ex-thumb"><img src="https://img.youtube.com/vi/b6ouj88iBZs/hqdefault.jpg" alt="Flat Dumbbell Press"><div class="ex-thumb-overlay"></div><a class="ex-play" href="https://www.youtube.com/watch?v=b6ouj88iBZs" target="_blank"></a></div><div class="ex-info"><div class="ex-name">Flat Dumbbell Press</div><div class="ex-desc">นอนราบ กดดัมเบลขึ้น-ลง ช่วง ROM กว้างกว่า Barbell ฝึก Mid Chest</div><a class="ex-link" href="https://www.youtube.com/watch?v=b6ouj88iBZs" target="_blank">ดูวิดีโอ Jeff Nippard</a></div></div>
+        <div class="ex-card rv"><div class="ex-thumb"><img src="https://img.youtube.com/vi/CAwf7n6Luuc/hqdefault.jpg" alt="Lat Pulldown"><div class="ex-thumb-overlay"></div><a class="ex-play" href="https://www.youtube.com/watch?v=CAwf7n6Luuc" target="_blank"></a></div><div class="ex-info"><div class="ex-name">Lat Pulldown</div><div class="ex-desc">นั่งดึงบาร์ลงมาที่หน้าอก ข้อศอกชี้ลง บีบ Lats ทุก rep</div><a class="ex-link" href="https://www.youtube.com/watch?v=CAwf7n6Luuc" target="_blank">ดูวิดีโอ 3 Golden Rules</a></div></div>
+        <div class="ex-card rv"><div class="ex-thumb"><img src="https://img.youtube.com/vi/DXL18E7QRbk/hqdefault.jpg" alt="One Arm Row"><div class="ex-thumb-overlay"></div><a class="ex-play" href="https://www.youtube.com/watch?v=DXL18E7QRbk" target="_blank"></a></div><div class="ex-info"><div class="ex-name">One Arm Row</div><div class="ex-desc">วางเข่าและมือบนม้า ดึงดัมเบลขึ้นข้างเดียว ฝึก Lats และ Rhomboids</div><a class="ex-link" href="https://www.youtube.com/watch?v=DXL18E7QRbk" target="_blank">ดูวิดีโอ Perfect Pull</a></div></div>
+        <div class="ex-card rv"><div class="ex-thumb"><img src="https://img.youtube.com/vi/IQA9QvItqtE/hqdefault.jpg" alt="Lateral Raise"><div class="ex-thumb-overlay"></div><a class="ex-play" href="https://www.youtube.com/watch?v=IQA9QvItqtE" target="_blank"></a></div><div class="ex-info"><div class="ex-name">Lateral Raise</div><div class="ex-desc">ยกดัมเบลออกด้านข้างระดับไหล่ นิ้วก้อยขึ้นเล็กน้อย ฝึก Side Delt</div><a class="ex-link" href="https://www.youtube.com/watch?v=IQA9QvItqtE" target="_blank">ดูวิดีโอ Jeff Nippard</a></div></div>
+        <div class="ex-card rv"><div class="ex-thumb"><img src="https://img.youtube.com/vi/an1BMInTXLk/hqdefault.jpg" alt="Cable Curl"><div class="ex-thumb-overlay"></div><a class="ex-play" href="https://www.youtube.com/watch?v=an1BMInTXLk" target="_blank"></a></div><div class="ex-info"><div class="ex-name">Cable Curl</div><div class="ex-desc">ม้วนสายเคเบิลขึ้น แรงดึงคงที่ตลอด ROM ตึง Bicep กว่าดัมเบลมาก</div><a class="ex-link" href="https://www.youtube.com/watch?v=an1BMInTXLk" target="_blank">ดูวิดีโอสอน</a></div></div>
+        <div class="ex-card rv"><div class="ex-thumb"><img src="https://img.youtube.com/vi/popGXI-qs98/hqdefault.jpg" alt="Rope Pushdown"><div class="ex-thumb-overlay"></div><a class="ex-play" href="https://www.youtube.com/watch?v=popGXI-qs98" target="_blank"></a></div><div class="ex-info"><div class="ex-name">Rope Pushdown</div><div class="ex-desc">กดเชือกลงด้านล่าง กางปลายเชือกออกที่สุด ฝึก Tricep ทุกหัว</div><a class="ex-link" href="https://www.youtube.com/watch?v=popGXI-qs98" target="_blank">ดูวิดีโอ Triceps</a></div></div>
+      </div>
+    </div>
+    <div class="tab-panel" id="wB">
+      <div class="ex-grid">
+        <div class="ex-card rv"><div class="ex-thumb"><img src="https://img.youtube.com/vi/Hdc7Mw6BIEE/hqdefault.jpg" alt="Pull Up"><div class="ex-thumb-overlay"></div><a class="ex-play" href="https://www.youtube.com/watch?v=Hdc7Mw6BIEE" target="_blank"></a></div><div class="ex-info"><div class="ex-name">Pull Up</div><div class="ex-desc">แขวนบาร์จับกว้าง ดึงตัวขึ้นจนคางพ้น ฝึก Lats, Biceps, Core</div><a class="ex-link" href="https://www.youtube.com/watch?v=Hdc7Mw6BIEE" target="_blank">ดูวิดีโอ Jeff Nippard</a></div></div>
+        <div class="ex-card rv"><div class="ex-thumb"><img src="https://img.youtube.com/vi/DXL18E7QRbk/hqdefault.jpg" alt="Seated Cable Row"><div class="ex-thumb-overlay"></div><a class="ex-play" href="https://www.youtube.com/watch?v=DXL18E7QRbk" target="_blank"></a></div><div class="ex-info"><div class="ex-name">Seated Cable Row</div><div class="ex-desc">นั่งดึงสายเคเบิลเข้าหาท้อง บีบสะบักเข้าหากัน ฝึก Mid Back</div><a class="ex-link" href="https://www.youtube.com/watch?v=DXL18E7QRbk" target="_blank">ดูวิดีโอ Perfect Pull</a></div></div>
+        <div class="ex-card rv"><div class="ex-thumb"><img src="https://img.youtube.com/vi/NsEbXsTwas8/hqdefault.jpg" alt="Machine Chest Press"><div class="ex-thumb-overlay"></div><a class="ex-play" href="https://www.youtube.com/watch?v=NsEbXsTwas8" target="_blank"></a></div><div class="ex-info"><div class="ex-name">Machine Chest Press</div><div class="ex-desc">กดเครื่อง Chest Press ตรง ปลอดภัย เหมาะตอนล้า ฝึก Chest & Triceps</div><a class="ex-link" href="https://www.youtube.com/watch?v=NsEbXsTwas8" target="_blank">ดูวิดีโอ Best Chest</a></div></div>
+        <div class="ex-card rv"><div class="ex-thumb"><img src="https://img.youtube.com/vi/j0vWz7hoEOE/hqdefault.jpg" alt="Rear Delt Fly"><div class="ex-thumb-overlay"></div><a class="ex-play" href="https://www.youtube.com/watch?v=j0vWz7hoEOE" target="_blank"></a></div><div class="ex-info"><div class="ex-name">Rear Delt Fly</div><div class="ex-desc">โน้มตัวไปข้างหน้า กางดัมเบลออกด้านข้าง ฝึก Posterior Deltoid</div><a class="ex-link" href="https://www.youtube.com/results?search_query=rear+delt+fly+proper+form" target="_blank">ค้นหาวิดีโอสอน</a></div></div>
+        <div class="ex-card rv"><div class="ex-thumb"><img src="https://img.youtube.com/vi/qEwKCR5JCog/hqdefault.jpg" alt="Shoulder Press"><div class="ex-thumb-overlay"></div><a class="ex-play" href="https://www.youtube.com/watch?v=qEwKCR5JCog" target="_blank"></a></div><div class="ex-info"><div class="ex-name">Shoulder Press</div><div class="ex-desc">กดดัมเบลขึ้นเหนือหัว ข้อศอก 45° ฝึก Anterior & Lateral Deltoid</div><a class="ex-link" href="https://www.youtube.com/watch?v=qEwKCR5JCog" target="_blank">ดูวิดีโอสอน</a></div></div>
+        <div class="ex-card rv"><div class="ex-thumb"><img src="https://img.youtube.com/vi/zC3nLlEvin4/hqdefault.jpg" alt="Hammer Curl"><div class="ex-thumb-overlay"></div><a class="ex-play" href="https://www.youtube.com/watch?v=zC3nLlEvin4" target="_blank"></a></div><div class="ex-info"><div class="ex-name">Hammer Curl</div><div class="ex-desc">จับดัมเบลท่า Neutral (นิ้วหัวแม่มือขึ้น) ม้วนขึ้น ฝึก Brachialis & Bicep</div><a class="ex-link" href="https://www.youtube.com/watch?v=zC3nLlEvin4" target="_blank">ดูวิดีโอสอน</a></div></div>
+        <div class="ex-card rv"><div class="ex-thumb"><img src="https://img.youtube.com/vi/popGXI-qs98/hqdefault.jpg" alt="Overhead Tricep Extension"><div class="ex-thumb-overlay"></div><a class="ex-play" href="https://www.youtube.com/watch?v=popGXI-qs98" target="_blank"></a></div><div class="ex-info"><div class="ex-name">Overhead Tricep Extension</div><div class="ex-desc">ยกดัมเบลหรือเคเบิลเหนือหัว งอข้อศอกลงหลัง ฝึก Long Head Tricep</div><a class="ex-link" href="https://www.youtube.com/watch?v=popGXI-qs98" target="_blank">ดูวิดีโอ Triceps</a></div></div>
+      </div>
+    </div>
+    <div class="tab-panel" id="wC">
+      <div class="ex-grid">
+        <div class="ex-card rv"><div class="ex-thumb"><img src="https://img.youtube.com/vi/CAwf7n6Luuc/hqdefault.jpg" alt="Lat Pulldown"><div class="ex-thumb-overlay"></div><a class="ex-play" href="https://www.youtube.com/watch?v=CAwf7n6Luuc" target="_blank"></a></div><div class="ex-info"><div class="ex-name">Lat Pulldown</div><div class="ex-desc">ดึงบาร์ลงมาหน้าอก จับกว้าง Lean Back เล็กน้อย ฝึก Lats</div><a class="ex-link" href="https://www.youtube.com/watch?v=CAwf7n6Luuc" target="_blank">ดูวิดีโอ 3 Golden Rules</a></div></div>
+        <div class="ex-card rv"><div class="ex-thumb"><img src="https://img.youtube.com/vi/DXL18E7QRbk/hqdefault.jpg" alt="Cable Row"><div class="ex-thumb-overlay"></div><a class="ex-play" href="https://www.youtube.com/watch?v=DXL18E7QRbk" target="_blank"></a></div><div class="ex-info"><div class="ex-name">Cable Row</div><div class="ex-desc">นั่งดึงสายเคเบิลกลับ บีบสะบักหนัก ฝึก Rhomboids & Mid Trap</div><a class="ex-link" href="https://www.youtube.com/watch?v=DXL18E7QRbk" target="_blank">ดูวิดีโอ Perfect Pull</a></div></div>
+        <div class="ex-card rv"><div class="ex-thumb"><img src="https://img.youtube.com/vi/DXL18E7QRbk/hqdefault.jpg" alt="Dumbbell Row"><div class="ex-thumb-overlay"></div><a class="ex-play" href="https://www.youtube.com/watch?v=DXL18E7QRbk" target="_blank"></a></div><div class="ex-info"><div class="ex-name">Dumbbell Row</div><div class="ex-desc">โน้มตัว 45° ดึงดัมเบลขึ้น ช่วงการเคลื่อนไหวกว้าง ฝึก Full Back</div><a class="ex-link" href="https://www.youtube.com/watch?v=DXL18E7QRbk" target="_blank">ดูวิดีโอสอน</a></div></div>
+        <div class="ex-card rv"><div class="ex-thumb"><img src="https://img.youtube.com/vi/IQA9QvItqtE/hqdefault.jpg" alt="Lateral Raise"><div class="ex-thumb-overlay"></div><a class="ex-play" href="https://www.youtube.com/watch?v=IQA9QvItqtE" target="_blank"></a></div><div class="ex-info"><div class="ex-name">Lateral Raise</div><div class="ex-desc">ยกดัมเบลออกด้านข้าง ข้อศอกงอเล็กน้อย หยุดระดับไหล่</div><a class="ex-link" href="https://www.youtube.com/watch?v=IQA9QvItqtE" target="_blank">ดูวิดีโอ Jeff Nippard</a></div></div>
+        <div class="ex-card rv"><div class="ex-thumb"><img src="https://img.youtube.com/vi/j0vWz7hoEOE/hqdefault.jpg" alt="Rear Delt Fly"><div class="ex-thumb-overlay"></div><a class="ex-play" href="https://www.youtube.com/results?search_query=rear+delt+fly+form+tutorial" target="_blank"></a></div><div class="ex-info"><div class="ex-name">Rear Delt Fly</div><div class="ex-desc">นั่ง โน้มตัว กางแขนออก ฝึก Rear Delt ที่มักถูกละเลย</div><a class="ex-link" href="https://www.youtube.com/results?search_query=rear+delt+fly+form+tutorial" target="_blank">ค้นหาวิดีโอสอน</a></div></div>
+        <div class="ex-card rv"><div class="ex-thumb"><img src="https://img.youtube.com/vi/j0vWz7hoEOE/hqdefault.jpg" alt="Face Pull"><div class="ex-thumb-overlay"></div><a class="ex-play" href="https://www.youtube.com/results?search_query=face+pull+proper+form+tutorial" target="_blank"></a></div><div class="ex-info"><div class="ex-name">Face Pull</div><div class="ex-desc">ดึงเชือกเคเบิลมาที่ใบหน้า กางข้อศอกออก ฝึก Rear Delt & Rotator Cuff</div><a class="ex-link" href="https://www.youtube.com/results?search_query=face+pull+proper+form" target="_blank">ค้นหาวิดีโอสอน</a></div></div>
+        <div class="ex-card rv"><div class="ex-thumb"><img src="https://img.youtube.com/vi/an1BMInTXLk/hqdefault.jpg" alt="Bicep Curl"><div class="ex-thumb-overlay"></div><a class="ex-play" href="https://www.youtube.com/watch?v=an1BMInTXLk" target="_blank"></a></div><div class="ex-info"><div class="ex-name">Bicep Curl</div><div class="ex-desc">ม้วน Supinated Grip ขึ้นช้าๆ บีบค้างจุดสูงสุด 1 วินาที</div><a class="ex-link" href="https://www.youtube.com/watch?v=an1BMInTXLk" target="_blank">ดูวิดีโอสอน</a></div></div>
+        <div class="ex-card rv"><div class="ex-thumb"><img src="https://img.youtube.com/vi/popGXI-qs98/hqdefault.jpg" alt="Tricep Pushdown"><div class="ex-thumb-overlay"></div><a class="ex-play" href="https://www.youtube.com/watch?v=popGXI-qs98" target="_blank"></a></div><div class="ex-info"><div class="ex-name">Tricep Pushdown</div><div class="ex-desc">กดบาร์หรือเชือกลงตรง ข้อศอกชิดลำตัว ฝึก Lateral & Medial Tricep</div><a class="ex-link" href="https://www.youtube.com/watch?v=popGXI-qs98" target="_blank">ดูวิดีโอ Triceps</a></div></div>
+      </div>
+    </div>
+    <div class="tab-panel" id="wL">
+      <div class="ex-grid">
+        <div class="ex-card rv"><div class="ex-thumb"><img src="https://img.youtube.com/vi/1Tq3QdYUuHs/hqdefault.jpg" alt="Leg Curl"><div class="ex-thumb-overlay"></div><a class="ex-play" href="https://www.youtube.com/results?search_query=lying+leg+curl+machine+proper+form" target="_blank"></a></div><div class="ex-info"><div class="ex-name">Leg Curl ✅</div><div class="ex-desc">นอนคว่ำบนเครื่อง ม้วนขาขึ้น ฝึก Hamstrings โดยไม่กดเข่า — ปลอดภัยกับเข่าซ้าย</div><a class="ex-link" href="https://www.youtube.com/results?search_query=lying+leg+curl+proper+form" target="_blank">ค้นหาวิดีโอสอน</a></div></div>
+        <div class="ex-card rv"><div class="ex-thumb"><img src="https://img.youtube.com/vi/wPM8icPu6H8/hqdefault.jpg" alt="Glute Bridge"><div class="ex-thumb-overlay"></div><a class="ex-play" href="https://www.youtube.com/watch?v=wPM8icPu6H8" target="_blank"></a></div><div class="ex-info"><div class="ex-name">Glute Bridge ✅</div><div class="ex-desc">นอนหงาย เท้าราบพื้น ยกก้นขึ้น บีบก้นค้าง ฝึก Glutes & Hamstrings</div><a class="ex-link" href="https://www.youtube.com/watch?v=wPM8icPu6H8" target="_blank">ดูวิดีโอสอน</a></div></div>
+        <div class="ex-card rv"><div class="ex-thumb"><img src="https://img.youtube.com/vi/xDmFkJxPzeM/hqdefault.jpg" alt="Hip Thrust"><div class="ex-thumb-overlay"></div><a class="ex-play" href="https://www.youtube.com/watch?v=xDmFkJxPzeM" target="_blank"></a></div><div class="ex-info"><div class="ex-name">Hip Thrust ✅</div><div class="ex-desc">พิงม้านั่ง วาง Barbell บนสะโพก ยกสะโพกขึ้น ท่าที่สุดสำหรับ Glute Max</div><a class="ex-link" href="https://www.youtube.com/watch?v=xDmFkJxPzeM" target="_blank">ดูวิดีโอสอน</a></div></div>
+        <div class="ex-card rv"><div class="ex-thumb"><img src="https://img.youtube.com/vi/97NbelB5yvQ/hqdefault.jpg" alt="Calf Raise"><div class="ex-thumb-overlay"></div><a class="ex-play" href="https://www.youtube.com/watch?v=97NbelB5yvQ" target="_blank"></a></div><div class="ex-info"><div class="ex-name">Calf Raise ✅</div><div class="ex-desc">ยืนปลายเท้า ยกส้นขึ้น-ลงช้าๆ ค้าง 2 วินาทีที่จุดสูงสุด ฝึก Gastrocnemius</div><a class="ex-link" href="https://www.youtube.com/watch?v=97NbelB5yvQ" target="_blank">ดูวิดีโอสอน</a></div></div>
+        <div class="ex-card rv"><div class="ex-thumb"><img src="https://img.youtube.com/vi/rEqRmKAQ5xM/hqdefault.jpg" alt="Stationary Bike"><div class="ex-thumb-overlay"></div><a class="ex-play" href="https://www.youtube.com/watch?v=rEqRmKAQ5xM" target="_blank"></a></div><div class="ex-info"><div class="ex-name">Stationary Bike ✅</div><div class="ex-desc">ปั่น 20-30 นาที ความเข้มข้นปานกลาง Cardio ที่ดีที่สุดสำหรับเข่า แรงกระแทกต่ำมาก</div><a class="ex-link" href="https://www.youtube.com/watch?v=rEqRmKAQ5xM" target="_blank">ดูวิดีโอ 20 Min Beginner</a></div></div>
+      </div>
+    </div>
+
+    <div class="nut-grid rv">
+      <div class="nut"><span class="nico">🔥</span><div class="nval">2,200–2,400</div><div class="nlbl">Calories</div></div>
+      <div class="nut"><span class="nico">🥩</span><div class="nval">140–160g</div><div class="nlbl">Protein</div></div>
+      <div class="nut"><span class="nico">💧</span><div class="nval">3 ลิตร</div><div class="nlbl">Water</div></div>
+      <div class="nut"><span class="nico">😴</span><div class="nval">7–8 ชม.</div><div class="nlbl">Sleep</div></div>
+      <div class="nut"><span class="nico">👟</span><div class="nval">8–10K</div><div class="nlbl">Steps</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 ROADMAP -->
+<section class="sec" id="roadmap">
+  <div class="sn">( 06 )</div>
+  <div>
+    <div class="sl rv">6–12 Month</div>
+    <div class="st rv">CAREER<br><span class="p">ROADMAP.</span></div>
+    <div class="rv">
+      <div class="road-phase">
+        <div class="rh">🔵 เดือน 1–2 · Foundation</div>
+        <div class="ri">Linux + Terminal Mastery (permissions, processes, bash scripting)</div>
+        <div class="ri">Networking Deep Dive (OSI 7 layers, Wireshark, tcpdump)</div>
+        <div class="ri">Python for Security (log parsing, regex, automation)</div>
+        <div class="ri">Git/GitHub workflow (branch, merge, pull request)</div>
+      </div>
+      <div class="road-phase g">
+        <div class="rh">🟢 เดือน 3–4 · Core Security Skills</div>
+        <div class="ri">Web App Security (SQLi, XSS, CSRF ใน DVWA, HackTheBox)</div>
+        <div class="ri">SIEM Basics (log analysis, alert rules, Splunk/Elastic)</div>
+        <div class="ri">Firewall + VPN + IDS/IPS (config จริง)</div>
+        <div class="ri">Incident Response basics (6 phases)</div>
+      </div>
+      <div class="road-phase y">
+        <div class="rh">🟡 เดือน 5–8 · Intermediate</div>
+        <div class="ri">CompTIA Security+ (เตรียมสอบ)</div>
+        <div class="ri">Docker + Container basics</div>
+        <div class="ri">CTF Practice (HackTheBox Easy, TryHackMe, PicoCTF)</div>
+      </div>
+      <div class="road-phase pu">
+        <div class="rh">🟣 เดือน 9–12 · Advanced</div>
+        <div class="ri">Security Automation (Python log monitoring script)</div>
+        <div class="ri">Cloud Security basics (AWS/Azure IAM, security groups)</div>
+        <div class="ri">CEH หรือ eJPT (optional)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 RULES -->
+<section class="sec" id="rules">
+  <div class="sn">( 07 )</div>
+  <div>
+    <div class="sl rv">Non-negotiable</div>
+    <div class="st rv">THE<br><span class="p">RULES.</span></div>
+    <div class="rule-list rv">
+      <div class="rule"><div class="rule-n">01.</div><div><div class="rule-t">ความสม่ำเสมอ > ความสมบูรณ์แบบ</div><div class="rule-s">8 สัปดาห์ต้องไปถึงเส้นชัย</div></div></div>
+      <div class="rule"><div class="rule-n">02.</div><div><div class="rule-t">นอน ≥ 7.5 ชม. ทุกคืน</div><div class="rule-s">ห้ามลดเวลานอนเพื่อเรียนเพิ่ม</div></div></div>
+      <div class="rule"><div class="rule-n">03.</div><div><div class="rule-t">เรียน Security เฉพาะ อ.+พฤ.</div><div class="rule-s">วันอื่นพักจริงๆ ห้าม grind</div></div></div>
+      <div class="rule"><div class="rule-n">04.</div><div><div class="rule-t">ปกป้องเข่าซ้ายเสมอ</div><div class="rule-s">ห้าม Squat หนัก, Jump, Sprint</div></div></div>
+      <div class="rule"><div class="rule-n">05.</div><div><div class="rule-t">โปรตีนต้องมาก่อน</div><div class="rule-s">140–160g/วัน ไม่ต่อรอง</div></div></div>
+      <div class="rule"><div class="rule-n">06.</div><div><div class="rule-t">สัปดาห์แรก = Mode สังเกต</div><div class="rule-s">ฟังมากกว่าพูด จดทุกอย่าง ถามดีๆ</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<section class="footer">
+  <div class="fl rv">Ready</div>
+  <div class="fb rv">LET'S<br>GO.</div>
+  <div class="fi rv">Ford · Security Intern · ThaiBev 2026 · Silom Edge, Bangkok</div>
+</section>
+
+<script>
+// cursor
+var c1=document.getElementById('c1'),c2=document.getElementById('c2'),mx=0,my=0,fx=0,fy=0;
+document.addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY;c1.style.left=mx+'px';c1.style.top=my+'px'});
+(function loop(){fx+=(mx-fx)*.1;fy+=(my-fy)*.1;c2.style.left=fx+'px';c2.style.top=fy+'px';requestAnimationFrame(loop)})();
+document.querySelectorAll('a,.skill-item,.goal-item,.check-row,.tab-btn,.wo-card,.rule,.ex').forEach(function(el){
+  el.addEventListener('mouseenter',function(){c1.style.transform='translate(-50%,-50%) scale(2.5)';c2.style.transform='translate(-50%,-50%) scale(1.4)'});
+  el.addEventListener('mouseleave',function(){c1.style.transform='translate(-50%,-50%) scale(1)';c2.style.transform='translate(-50%,-50%) scale(1)'});
+});
+
+// particles
+var cv=document.getElementById('cvs'),ctx=cv.getContext('2d'),dots=[];
+function sz(){cv.width=innerWidth;cv.height=innerHeight}sz();
+window.addEventListener('resize',sz);
+for(var i=0;i<70;i++)dots.push({x:Math.random()*innerWidth,y:Math.random()*innerHeight,r:Math.random()*1.2+.3,a:Math.random()*Math.PI*2,sp:Math.random()*.003+.001,op:Math.random()*.35+.08});
+(function draw(){ctx.clearRect(0,0,cv.width,cv.height);dots.forEach(function(d){d.a+=d.sp;d.x+=Math.sin(d.a)*.25;d.y+=Math.cos(d.a*.7)*.18;if(d.x<0)d.x=cv.width;if(d.x>cv.width)d.x=0;if(d.y<0)d.y=cv.height;if(d.y>cv.height)d.y=0;ctx.beginPath();ctx.arc(d.x,d.y,d.r,0,Math.PI*2);ctx.fillStyle='rgba(255,255,255,'+d.op+')';ctx.fill()});requestAnimationFrame(draw)})();
+
+// countdown
+function upCD(){
+  var t=new Date(2026,5,4).getTime(),days=Math.max(0,Math.ceil((t-Date.now())/86400000));
+  document.getElementById('cd').textContent=days;
+  var s=new Date(2026,5,4),e=new Date(2026,6,31),wd=0;
+  for(var d=new Date(s);d<=e;d.setDate(d.getDate()+1)){var dy=d.getDay();if(dy&&dy!==6)wd++;}
+  document.getElementById('wdays').textContent=wd;
+}
+upCD();
+
+// localStorage helpers
+function load(k){try{return JSON.parse(localStorage.getItem(k)||'{}')}catch(e){return{}}}
+function save(k,v){localStorage.setItem(k,JSON.stringify(v))}
+
+// checklist
+function bindChecklist(group){
+  var key=group.dataset.key;
+  var state=load(key);
+  group.querySelectorAll('input[type=checkbox]').forEach(function(cb){
+    var id=cb.dataset.id;
+    if(state[id]){cb.checked=true;cb.closest('.check-row').classList.add('done')}
+    cb.addEventListener('change',function(){
+      var s=load(key);
+      if(cb.checked){s[id]=true;cb.closest('.check-row').classList.add('done')}
+      else{delete s[id];cb.closest('.check-row').classList.remove('done')}
+      save(key,s);updatePrep();
+    });
+  });
+}
+function updatePrep(){
+  var all=document.querySelectorAll('[data-key=prep] input'),done=0;
+  all.forEach(function(c){if(c.checked)done++});
+  var pct=(done/all.length*100).toFixed(1);
+  document.getElementById('prepPct').textContent=done+'/'+all.length;
+  document.getElementById('prepFill').style.width=pct+'%';
+}
+document.querySelectorAll('[data-key]').forEach(bindChecklist);
+
+// pre-fill known done items
+(function(){
+  var s=load('prep');
+  ['p1-1','p1-2','p1-5','p1-6'].forEach(function(id){s[id]=true});
+  save('prep',s);
+  document.querySelectorAll('[data-key=prep] input').forEach(function(cb){
+    if(load('prep')[cb.dataset.id]){cb.checked=true;cb.closest('.check-row').classList.add('done')}
+  });
+  updatePrep();
+})();
+
+// tabs - schedule
+document.querySelectorAll('#schedTabs .tab-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    document.querySelectorAll('#schedTabs .tab-btn').forEach(function(b){b.classList.remove('act')});
+    btn.classList.add('act');
+    var map={work:'tw',sat:'tsat',sun:'tsun'};
+    Object.values(map).forEach(function(id){document.getElementById(id).classList.remove('act')});
+    document.getElementById(map[btn.dataset.t]).classList.add('act');
+  });
+});
+
+// tabs - workout
+document.querySelectorAll('#woTabs .tab-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    document.querySelectorAll('#woTabs .tab-btn').forEach(function(b){b.classList.remove('act')});
+    btn.classList.add('act');
+    ['wA','wB','wC','wL'].forEach(function(id){document.getElementById(id).classList.remove('act')});
+    document.getElementById('w'+btn.dataset.w).classList.add('act');
+  });
+});
+
+// reveal
+var obs=new IntersectionObserver(function(entries){
+  entries.forEach(function(entry,i){
+    if(entry.isIntersecting){
+      setTimeout(function(){entry.target.classList.add('on')},i*60);
+      obs.unobserve(entry.target);
+    }
+  });
+},{threshold:.08});
+document.querySelectorAll('.rv').forEach(function(el){obs.observe(el)});
+</script>
+</body>
+</html>
