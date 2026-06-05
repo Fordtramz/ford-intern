@@ -192,6 +192,29 @@ nav{position:fixed;top:0;left:0;right:0;padding:26px 48px;display:flex;justify-c
 .rule-t{font-weight:600;margin-bottom:2px}
 .rule-s{font-size:12px;color:var(--muted2)}
 
+/* lift tracker */
+.lift-block{margin-top:36px}
+.lift-tabs{display:flex;gap:0;border-bottom:1px solid var(--border);margin-bottom:16px;overflow-x:auto}
+.lt-btn{background:none;border:none;color:var(--muted2);font-size:12px;font-weight:600;padding:10px 16px;border-bottom:2px solid transparent;margin-bottom:-1px;cursor:none;transition:color .2s,border-color .2s;white-space:nowrap;letter-spacing:.5px;text-transform:uppercase}
+.lt-btn.act{color:var(--pink);border-bottom-color:var(--pink)}
+.lift-panel{display:none}.lift-panel.act{display:block}
+.lift-row{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px 18px;margin-bottom:8px;transition:border-color .2s}
+.lift-row:hover{border-color:rgba(244,63,142,.2)}
+.lift-row-top{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:10px}
+.lift-name{font-size:13px;font-weight:700;display:flex;align-items:center;gap:8px}
+.lift-controls{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.lift-lbl{font-size:11px;color:var(--muted2);white-space:nowrap;letter-spacing:.5px}
+.lift-inp{background:var(--surface2);border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:13px;font-weight:700;padding:5px 8px;width:62px;outline:none;text-align:center;-moz-appearance:textfield}
+.lift-inp:focus{border-color:var(--pink)}
+.lift-inp::-webkit-outer-spin-button,.lift-inp::-webkit-inner-spin-button{-webkit-appearance:none}
+.lift-btn{background:var(--pink);color:white;border:none;border-radius:6px;padding:5px 12px;font-size:11px;font-weight:700;cursor:none;transition:opacity .15s;letter-spacing:.5px;text-transform:uppercase;white-space:nowrap}
+.lift-btn:hover{opacity:.8}
+.lift-bar-row{display:flex;align-items:center;gap:10px}
+.lift-track{flex:1;background:var(--border);height:3px;border-radius:2px;overflow:hidden}
+.lift-fill{height:100%;background:linear-gradient(90deg,var(--pink),var(--purple));border-radius:2px;transition:width .7s cubic-bezier(.4,0,.2,1)}
+.lift-pct{font-size:11px;color:var(--muted2);font-weight:700;min-width:34px;text-align:right;letter-spacing:.5px}
+@media(max-width:700px){.lift-row-top{flex-direction:column;align-items:flex-start}}
+
 /* footer */
 .footer{position:relative;z-index:1;padding:120px 48px 80px;border-top:1px solid var(--border);text-align:center;overflow:hidden}
 .fl{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--muted2);margin-bottom:24px}
@@ -247,7 +270,7 @@ nav{position:fixed;top:0;left:0;right:0;padding:26px 48px;display:flex;justify-c
   <div>
     <div class="sl rv">About</div>
     <div class="st rv">THE<br><span class="p">MISSION.</span></div>
-    <p class="sb rv">นักศึกษาปี 4 เริ่มฝึกงาน 4 มิ.ย. ถึง 31 ก.ค. 2026 — เดินทางจาก The Tree Rio บางอ้อ ไป Silom Edge ทุกวันจันทร์ถึงศุกร์ 09:00–17:00</p>
+    <p class="sb rv">นักศึกษาปี 4 เริ่มฝึกงาน 4 มิ.ย. ถึง 31 ก.ค. 2026 — เดินทางจาก The Tree Rio บางอ้อ ไป Silom Edge ทุกวันจันทร์ถึงศุกร์ 09:00–18:00</p>
     <div class="cd rv">
       <div>
         <div class="cdn" id="cd">—</div>
@@ -257,7 +280,7 @@ nav{position:fixed;top:0;left:0;right:0;padding:26px 48px;display:flex;justify-c
     <div class="stats rv">
       <div class="stat"><div class="sv">8</div><div class="sl2">สัปดาห์</div></div>
       <div class="stat"><div class="sv" id="wdays">—</div><div class="sl2">วันทำงาน</div></div>
-      <div class="stat"><div class="sv">09–17</div><div class="sl2">จ–ศ</div></div>
+      <div class="stat"><div class="sv">09–18</div><div class="sl2">จ–ศ</div></div>
     </div>
   </div>
 </section>
@@ -311,17 +334,17 @@ nav{position:fixed;top:0;left:0;right:0;padding:26px 48px;display:flex;justify-c
     </div>
     <div class="tab-panel act" id="tw">
       <div class="timeline">
-        <div class="trow rv"><div class="ttime">06:15</div><div class="tact">ตื่น</div></div>
-        <div class="trow rv"><div class="ttime">06:15–07:00</div><div class="tact">อาบน้ำ · แต่งตัว · อาหารเช้า</div><div class="tdesc">โปรตีนก่อน — ไข่, นม, โยเกิร์ต</div></div>
-        <div class="trow rv"><div class="ttime">07:00–08:30</div><div class="tact">🚇 เดินทาง · The Tree Rio → Silom Edge</div><div class="tdesc">ฟัง podcast security</div></div>
+        <div class="trow rv"><div class="ttime">06:45</div><div class="tact">ตื่น</div></div>
+        <div class="trow rv"><div class="ttime">06:45–08:00</div><div class="tact">อาบน้ำ · แต่งตัว · อาหารเช้า</div><div class="tdesc">โปรตีนก่อน — ไข่, นม, โยเกิร์ต</div></div>
+        <div class="trow rv"><div class="ttime">08:00–09:00</div><div class="tact">🚇 เดินทาง · The Tree Rio → Silom Edge</div><div class="tdesc">ฟัง podcast security</div></div>
         <div class="trow rv"><div class="ttime">09:00–12:00</div><div class="tact">🏢 ฝึกงาน รอบเช้า</div><div class="tdesc">Observe + งานที่ได้รับมอบหมาย</div></div>
         <div class="trow rv"><div class="ttime">12:00–13:00</div><div class="tact">🍱 พักกลางวัน</div><div class="tdesc">เดินสั้นๆ ห้ามดู screen ตลอด</div></div>
-        <div class="trow rv"><div class="ttime">13:00–17:00</div><div class="tact">🏢 ฝึกงาน รอบบ่าย</div><div class="tdesc">จดบันทึก tool + คำถามพี่เลี้ยง</div></div>
-        <div class="trow rv"><div class="ttime">17:00–18:15</div><div class="tact">🚇 เดินทางกลับ</div><div class="tdesc">ปิดสมองงาน ฟังเพลง</div></div>
-        <div class="trow rv"><div class="ttime">18:15–19:15</div><div class="tact">🏋️ ออกกำลังกาย</div><div class="tdesc">ตาม Weekly Plan — ถ้าเหนื่อยมาก → walking 20 นาที</div></div>
-        <div class="trow rv"><div class="ttime">19:15–20:00</div><div class="tact">🍽️ อาหารเย็น</div><div class="tdesc">โปรตีน + คาร์บ ห้ามข้ามมื้อ</div></div>
-        <div class="trow rv"><div class="ttime">20:00–21:00</div><div class="tact">📚 Security Learning <span style="color:var(--pink);font-size:12px;">อ.+พฤ. เท่านั้น</span></div><div class="tdesc">จ./พ./ศ. = พักจริงๆ ห้าม grind</div></div>
-        <div class="trow rv"><div class="ttime">21:00–22:00</div><div class="tact">🌙 Wind down · Daily Log</div><div class="tdesc">ทำอะไร เรียนอะไร คำถามพรุ่งนี้</div></div>
+        <div class="trow rv"><div class="ttime">13:00–18:00</div><div class="tact">🏢 ฝึกงาน รอบบ่าย</div><div class="tdesc">จดบันทึก tool + คำถามพี่เลี้ยง</div></div>
+        <div class="trow rv"><div class="ttime">18:00–19:15</div><div class="tact">🚇 เดินทางกลับ</div><div class="tdesc">ปิดสมองงาน ฟังเพลง</div></div>
+        <div class="trow rv"><div class="ttime">19:15–20:15</div><div class="tact">🏋️ ออกกำลังกาย</div><div class="tdesc">ตาม Weekly Plan — ถ้าเหนื่อยมาก → walking 20 นาที</div></div>
+        <div class="trow rv"><div class="ttime">20:15–21:00</div><div class="tact">🍽️ อาหารเย็น</div><div class="tdesc">โปรตีน + คาร์บ ห้ามข้ามมื้อ</div></div>
+        <div class="trow rv"><div class="ttime">21:00–22:00</div><div class="tact">📚 Security Learning <span style="color:var(--pink);font-size:12px;">อ.+พฤ. เท่านั้น</span></div><div class="tdesc">จ./พ./ศ. = พักจริงๆ ห้าม grind</div></div>
+        <div class="trow rv"><div class="ttime">22:00–22:30</div><div class="tact">🌙 Wind down · Daily Log</div><div class="tdesc">ทำอะไร เรียนอะไร คำถามพรุ่งนี้</div></div>
         <div class="trow rv"><div class="ttime">22:30</div><div class="tact">😴 นอน ≥ 7.5 ชม.</div><div class="tdesc">non-negotiable</div></div>
       </div>
     </div>
@@ -429,6 +452,21 @@ nav{position:fixed;top:0;left:0;right:0;padding:26px 48px;display:flex;justify-c
         <div class="ex-card rv"><div class="ex-thumb"><img src="https://img.youtube.com/vi/97NbelB5yvQ/hqdefault.jpg" alt="Calf Raise"><div class="ex-thumb-overlay"></div><a class="ex-play" href="https://www.youtube.com/watch?v=97NbelB5yvQ" target="_blank"></a></div><div class="ex-info"><div class="ex-name">Calf Raise ✅</div><div class="ex-desc">ยืนปลายเท้า ยกส้นขึ้น-ลงช้าๆ ค้าง 2 วินาทีที่จุดสูงสุด ฝึก Gastrocnemius</div><a class="ex-link" href="https://www.youtube.com/watch?v=97NbelB5yvQ" target="_blank">ดูวิดีโอสอน</a></div></div>
         <div class="ex-card rv"><div class="ex-thumb"><img src="https://img.youtube.com/vi/rEqRmKAQ5xM/hqdefault.jpg" alt="Stationary Bike"><div class="ex-thumb-overlay"></div><a class="ex-play" href="https://www.youtube.com/watch?v=rEqRmKAQ5xM" target="_blank"></a></div><div class="ex-info"><div class="ex-name">Stationary Bike ✅</div><div class="ex-desc">ปั่น 20-30 นาที ความเข้มข้นปานกลาง Cardio ที่ดีที่สุดสำหรับเข่า แรงกระแทกต่ำมาก</div><a class="ex-link" href="https://www.youtube.com/watch?v=rEqRmKAQ5xM" target="_blank">ดูวิดีโอ 20 Min Beginner</a></div></div>
       </div>
+    </div>
+
+    <!-- Lift Progress -->
+    <div class="lift-block rv">
+      <div class="sl" style="margin-top:48px;margin-bottom:16px;">Lift Progress</div>
+      <div class="lift-tabs" id="ltTabs">
+        <button class="lt-btn act" data-lp="lpA">Upper A</button>
+        <button class="lt-btn" data-lp="lpB">Upper B</button>
+        <button class="lt-btn" data-lp="lpC">Upper C</button>
+        <button class="lt-btn" data-lp="lpLower">Lower Rehab</button>
+      </div>
+      <div id="lpA" class="lift-panel act"></div>
+      <div id="lpB" class="lift-panel"></div>
+      <div id="lpC" class="lift-panel"></div>
+      <div id="lpLower" class="lift-panel"></div>
     </div>
 
     <div class="nut-grid rv">
@@ -588,6 +626,105 @@ document.querySelectorAll('#woTabs .tab-btn').forEach(function(btn){
     document.getElementById('w'+btn.dataset.w).classList.add('act');
   });
 });
+
+// lift tracker
+var LP_EX = {
+  lpA:[
+    {id:'ua-incline-db',name:'Incline Dumbbell Press',n:1},
+    {id:'ua-flat-db',name:'Flat Dumbbell Press',n:2},
+    {id:'ua-lat-pulldown',name:'Lat Pulldown',n:3},
+    {id:'ua-one-arm-row',name:'One Arm Row',n:4},
+    {id:'ua-lateral-raise',name:'Lateral Raise',n:5},
+    {id:'ua-cable-curl',name:'Cable Curl',n:6},
+    {id:'ua-rope-pushdown',name:'Rope Pushdown',n:7}
+  ],
+  lpB:[
+    {id:'ub-pullup',name:'Pull Up (added weight)',n:1},
+    {id:'ub-seated-cable-row',name:'Seated Cable Row',n:2},
+    {id:'ub-machine-chest',name:'Machine Chest Press',n:3},
+    {id:'ub-rear-delt-fly',name:'Rear Delt Fly',n:4},
+    {id:'ub-shoulder-press',name:'Shoulder Press',n:5},
+    {id:'ub-hammer-curl',name:'Hammer Curl',n:6},
+    {id:'ub-overhead-tricep',name:'Overhead Tricep Extension',n:7}
+  ],
+  lpC:[
+    {id:'uc-lat-pulldown',name:'Lat Pulldown',n:1},
+    {id:'uc-cable-row',name:'Cable Row',n:2},
+    {id:'uc-dumbbell-row',name:'Dumbbell Row',n:3},
+    {id:'uc-lateral-raise',name:'Lateral Raise',n:4},
+    {id:'uc-rear-delt-fly',name:'Rear Delt Fly',n:5},
+    {id:'uc-face-pull',name:'Face Pull',n:6},
+    {id:'uc-bicep-curl',name:'Bicep Curl',n:7},
+    {id:'uc-tricep-pushdown',name:'Tricep Pushdown',n:8}
+  ],
+  lpLower:[
+    {id:'lr-leg-curl',name:'Leg Curl',n:1},
+    {id:'lr-glute-bridge',name:'Glute Bridge',n:2},
+    {id:'lr-hip-thrust',name:'Hip Thrust',n:3},
+    {id:'lr-calf-raise',name:'Calf Raise',n:4},
+    {id:'lr-stationary-bike',name:'Stationary Bike (resistance lv)',n:5}
+  ]
+};
+function loadLP(){try{return JSON.parse(localStorage.getItem('lift_progress')||'{}')}catch(e){return{}}}
+function saveLP(d){localStorage.setItem('lift_progress',JSON.stringify(d))}
+function buildLP(panelId,exercises){
+  var panel=document.getElementById(panelId);
+  if(!panel)return;
+  panel.innerHTML='';
+  var data=loadLP();
+  exercises.forEach(function(ex){
+    var d=data[ex.id]||{cur:'',goal:''};
+    var pct=(d.goal>0&&d.cur>0)?Math.min(100,Math.round(d.cur/d.goal*100)):0;
+    var row=document.createElement('div');
+    row.className='lift-row';
+    row.innerHTML=
+      '<div class="lift-row-top">'+
+        '<div class="lift-name"><span class="ex-n">'+ex.n+'</span>'+ex.name+'</div>'+
+        '<div class="lift-controls">'+
+          '<span class="lift-lbl">ปัจจุบัน</span>'+
+          '<input class="lift-inp" type="number" min="0" max="500" step="0.5" value="'+(d.cur||'')+'" placeholder="0" data-f="cur">'+
+          '<span class="lift-lbl">kg</span>'+
+          '<span class="lift-lbl" style="margin-left:4px">เป้าหมาย</span>'+
+          '<input class="lift-inp" type="number" min="0" max="500" step="0.5" value="'+(d.goal||'')+'" placeholder="0" data-f="goal">'+
+          '<span class="lift-lbl">kg</span>'+
+          '<button class="lift-btn">Save</button>'+
+        '</div>'+
+      '</div>'+
+      '<div class="lift-bar-row">'+
+        '<div class="lift-track"><div class="lift-fill" style="width:'+pct+'%"></div></div>'+
+        '<span class="lift-pct">'+pct+'%</span>'+
+      '</div>';
+    var btn=row.querySelector('.lift-btn');
+    btn.addEventListener('click',function(){
+      var cur=parseFloat(row.querySelector('[data-f="cur"]').value)||0;
+      var goal=parseFloat(row.querySelector('[data-f="goal"]').value)||0;
+      var ld=loadLP();ld[ex.id]={cur:cur,goal:goal};saveLP(ld);
+      var np=(goal>0&&cur>0)?Math.min(100,Math.round(cur/goal*100)):0;
+      row.querySelector('.lift-fill').style.width=np+'%';
+      row.querySelector('.lift-pct').textContent=np+'%';
+      btn.textContent='✓';setTimeout(function(){btn.textContent='Save'},1200);
+    });
+    panel.appendChild(row);
+  });
+}
+(function initLP(){
+  // pre-fill Upper B defaults
+  var ld=loadLP();
+  var def={'ub-pullup':{cur:37.3,goal:0},'ub-seated-cable-row':{cur:27.2,goal:0},'ub-machine-chest':{cur:30,goal:0},'ub-rear-delt-fly':{cur:5,goal:0},'ub-shoulder-press':{cur:25,goal:0},'ub-hammer-curl':{cur:15,goal:0},'ub-overhead-tricep':{cur:31.8,goal:0}};
+  Object.keys(def).forEach(function(id){if(!ld[id]||!ld[id].cur)ld[id]=def[id]});
+  saveLP(ld);
+  Object.keys(LP_EX).forEach(function(pid){buildLP(pid,LP_EX[pid])});
+  document.querySelectorAll('#ltTabs .lt-btn').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      document.querySelectorAll('#ltTabs .lt-btn').forEach(function(b){b.classList.remove('act')});
+      btn.classList.add('act');
+      Object.keys(LP_EX).forEach(function(id){
+        var p=document.getElementById(id);
+        p.classList.toggle('act',id===btn.dataset.lp);
+      });
+    });
+  });
+})();
 
 // reveal
 var obs=new IntersectionObserver(function(entries){
