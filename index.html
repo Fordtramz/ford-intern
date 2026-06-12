@@ -244,6 +244,7 @@ nav{position:fixed;top:0;left:0;right:0;padding:26px 48px;display:flex;justify-c
   <div class="nl">Ford</div>
   <div class="nm">
     <a href="#prep">Prep</a>
+    <a href="#summer">Summer</a>
     <a href="#schedule">Schedule</a>
     <a href="#skills">Skills</a>
     <a href="#fitness">Fitness</a>
@@ -321,9 +322,63 @@ nav{position:fixed;top:0;left:0;right:0;padding:26px 48px;display:flex;justify-c
   </div>
 </section>
 
-<!-- 03 DAILY SCHEDULE -->
-<section class="sec" id="schedule">
+<!-- 03 SUMMER GRIND -->
+<section class="sec" id="summer">
   <div class="sn">( 03 )</div>
+  <div>
+    <div class="sl rv">June Sprint</div>
+    <div class="st rv">SUMMER<br><span class="p">GRIND.</span></div>
+    <p class="sb rv">3 เป้าหมายขนานกันในเดือนมิถุนายน — Cert เรียนแทรกตอนทำงาน, Pentest ไต่ระดับทุกเย็น, แล้วลงสนามแข่ง CTF จริง 27 มิ.ย.</p>
+
+    <!-- CTF countdown -->
+    <div class="cd rv">
+      <div>
+        <div class="cdn" id="ctfcd">—</div>
+        <div class="cdd">วันจนถึง NCSA × CISCO CTF · 27 มิถุนายน 2026 · online 09:00–13:00</div>
+      </div>
+    </div>
+    <p class="sb rv" style="color:var(--yellow);margin-top:14px;max-width:560px">⚠️ สมัครให้เสร็จก่อน 20 มิ.ย. (วันปิดรับ) — รางวัลรวม 50,000 บาท · แนว Cisco Certified in Ethical Hacking</p>
+
+    <!-- Track 1: AWS Cert -->
+    <div class="rv">
+      <div class="road-phase">
+        <div class="rh">🎓 Track 1 · AWS CLF-C02 <span style="color:var(--muted2);font-weight:400;font-size:12px">— เรียนตอนทำงาน / พักเที่ยง (ไม่กินเวลาเย็น)</span></div>
+        <div class="ri">Day 1–5 (13–17 มิ.ย.) — เรียนครบ 4 Domain ทีละวัน วันละ ~1 ชม.</div>
+        <div class="ri">Day 6–7 (18–19 มิ.ย.) — ทำข้อสอบจริง 200 ข้อ · เป้า mock test > 85%</div>
+        <div class="ri">~20 มิ.ย. — จองสอบ Pearson VUE ถ้าผ่านเกณฑ์ (cert ข้าม GPA 2.66)</div>
+      </div>
+    </div>
+
+    <!-- Track 2: Pentest Ladder -->
+    <div class="check-group rv" data-key="pentest">
+      <div class="check-phase">⚔️ Track 2 · Pentest Ladder — 1 ห้อง/วัน · จ–ส (TryHackMe → HTB)</div>
+      <label class="check-row"><input type="checkbox" data-id="pt-1"><span class="cl">Pickle Rick (THM · Easy) — เริ่มวันนี้ 12 มิ.ย. 🥒</span></label>
+      <label class="check-row"><input type="checkbox" data-id="pt-2"><span class="cl">Basic Pentesting (THM · Easy)</span></label>
+      <label class="check-row"><input type="checkbox" data-id="pt-3"><span class="cl">RootMe (THM · Easy) — upload bypass + privesc</span></label>
+      <label class="check-row"><input type="checkbox" data-id="pt-4"><span class="cl">Vulnversity (THM · Easy) — nmap + enum</span></label>
+      <label class="check-row"><input type="checkbox" data-id="pt-5"><span class="cl">Blue / EternalBlue (THM · Easy) — Metasploit แรก</span></label>
+      <label class="check-row"><input type="checkbox" data-id="pt-6"><span class="cl">Kenobi (THM · Easy) — SMB + SUID privesc</span></label>
+      <label class="check-row"><input type="checkbox" data-id="pt-7"><span class="cl">Steel Mountain (THM · Medium) — Windows privesc</span></label>
+      <label class="check-row"><input type="checkbox" data-id="pt-8"><span class="cl">THM Path: Jr Penetration Tester (เก็บต่อเนื่อง)</span></label>
+      <label class="check-row"><input type="checkbox" data-id="pt-9"><span class="cl">HTB Starting Point — Tier 0–2 (ย้ายมา HTB)</span></label>
+      <label class="check-row"><input type="checkbox" data-id="pt-10"><span class="cl">HTB box แรก (Easy retired) — Lame / Blue</span></label>
+    </div>
+
+    <!-- Track 3: Internship knowledge -->
+    <div class="rv">
+      <div class="road-phase g">
+        <div class="rh">🏢 Track 3 · ความรู้จากที่ฝึกงาน (จ–ศ ระหว่างงาน)</div>
+        <div class="ri">จด tool / process ใหม่ที่เจอแต่ละวันลง Obsidian vault "Security-Notes"</div>
+        <div class="ri">ต่อยอด ELK / Log Analysis ที่พี่ไบรท์มอบหมาย → เชื่อมกับ pentest ที่บ้าน</div>
+        <div class="ri">เก็บ 1 คำถามดี ๆ ถามพี่เลี้ยงทุกวัน</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 DAILY SCHEDULE -->
+<section class="sec" id="schedule">
+  <div class="sn">( 04 )</div>
   <div>
     <div class="sl rv">Daily Life</div>
     <div class="st rv">DAILY<br><span class="p">SCHEDULE.</span></div>
@@ -338,12 +393,12 @@ nav{position:fixed;top:0;left:0;right:0;padding:26px 48px;display:flex;justify-c
         <div class="trow rv"><div class="ttime">06:45–08:00</div><div class="tact">อาบน้ำ · แต่งตัว · อาหารเช้า</div><div class="tdesc">โปรตีนก่อน — ไข่, นม, โยเกิร์ต</div></div>
         <div class="trow rv"><div class="ttime">08:00–09:00</div><div class="tact">🚇 เดินทาง · The Tree Rio → Silom Edge</div><div class="tdesc">ฟัง podcast security</div></div>
         <div class="trow rv"><div class="ttime">09:00–12:00</div><div class="tact">🏢 ฝึกงาน รอบเช้า</div><div class="tdesc">Observe + งานที่ได้รับมอบหมาย</div></div>
-        <div class="trow rv"><div class="ttime">12:00–13:00</div><div class="tact">🍱 พักกลางวัน</div><div class="tdesc">เดินสั้นๆ ห้ามดู screen ตลอด</div></div>
+        <div class="trow rv"><div class="ttime">12:00–13:00</div><div class="tact">🍱 พักเที่ยง + 🎓 AWS cert</div><div class="tdesc">กินเสร็จเปิด OpenExamPrep 15–20 ข้อ / อ่าน crash course (เบาๆ)</div></div>
         <div class="trow rv"><div class="ttime">13:00–18:00</div><div class="tact">🏢 ฝึกงาน รอบบ่าย</div><div class="tdesc">จดบันทึก tool + คำถามพี่เลี้ยง</div></div>
         <div class="trow rv"><div class="ttime">18:00–19:15</div><div class="tact">🚇 เดินทางกลับ</div><div class="tdesc">ปิดสมองงาน ฟังเพลง</div></div>
         <div class="trow rv"><div class="ttime">19:15–20:15</div><div class="tact">🏋️ ออกกำลังกาย</div><div class="tdesc">ตาม Weekly Plan — ถ้าเหนื่อยมาก → walking 20 นาที</div></div>
         <div class="trow rv"><div class="ttime">20:15–21:00</div><div class="tact">🍽️ อาหารเย็น</div><div class="tdesc">โปรตีน + คาร์บ ห้ามข้ามมื้อ</div></div>
-        <div class="trow rv"><div class="ttime">21:00–22:00</div><div class="tact">📚 Security Learning <span style="color:var(--pink);font-size:12px;">อ.+พฤ. เท่านั้น</span></div><div class="tdesc">จ./พ./ศ. = พักจริงๆ ห้าม grind</div></div>
+        <div class="trow rv"><div class="ttime">21:00–22:00</div><div class="tact">⚔️ Pentest 1 ห้อง <span style="color:var(--pink);font-size:12px;">จ–ส ทุกวัน</span></div><div class="tdesc">THM ไต่ไป HTB · จด writeup ลง Obsidian · อา. = พักจริงๆ ห้าม grind</div></div>
         <div class="trow rv"><div class="ttime">22:00–22:30</div><div class="tact">🌙 Wind down · Daily Log</div><div class="tdesc">ทำอะไร เรียนอะไร คำถามพรุ่งนี้</div></div>
         <div class="trow rv"><div class="ttime">22:30</div><div class="tact">😴 นอน ≥ 7.5 ชม.</div><div class="tdesc">non-negotiable</div></div>
       </div>
@@ -351,7 +406,8 @@ nav{position:fixed;top:0;left:0;right:0;padding:26px 48px;display:flex;justify-c
     <div class="tab-panel" id="tsat">
       <div class="timeline">
         <div class="trow rv"><div class="ttime">08:00</div><div class="tact">ตื่น สบายๆ</div></div>
-        <div class="trow rv"><div class="ttime">09:30–11:00</div><div class="tact">🦵 Lower Rehab + Cardio</div><div class="tdesc">Knee-friendly เท่านั้น</div></div>
+        <div class="trow rv"><div class="ttime">09:00–13:00</div><div class="tact">🚩 NCSA × CISCO CTF <span style="color:var(--pink);font-size:12px;">เฉพาะ 27 มิ.ย.</span></div><div class="tdesc">แข่ง online — เสาร์อื่นว่าง ทำ HTB box ยาวๆ แทน</div></div>
+        <div class="trow rv"><div class="ttime">09:30–11:00</div><div class="tact">🦵 Lower Rehab + Cardio</div><div class="tdesc">Knee-friendly เท่านั้น (สลับกับ CTF ถ้าตรงวัน)</div></div>
         <div class="trow rv"><div class="ttime">11:00–17:00</div><div class="tact">🎮 เวลาส่วนตัว</div><div class="tdesc">เพื่อน ครอบครัว ห้ามเรียน</div></div>
         <div class="trow rv"><div class="ttime">22:30</div><div class="tact">😴 นอน</div></div>
       </div>
@@ -369,7 +425,7 @@ nav{position:fixed;top:0;left:0;right:0;padding:26px 48px;display:flex;justify-c
 
 <!-- 04 SKILLS -->
 <section class="sec" id="skills">
-  <div class="sn">( 04 )</div>
+  <div class="sn">( 05 )</div>
   <div>
     <div class="sl rv">Tech Stack</div>
     <div class="st rv">SKILLS<br><span class="p">& TOOLS.</span></div>
@@ -388,7 +444,7 @@ nav{position:fixed;top:0;left:0;right:0;padding:26px 48px;display:flex;justify-c
 
 <!-- 05 FITNESS -->
 <section class="sec" id="fitness">
-  <div class="sn">( 05 )</div>
+  <div class="sn">( 06 )</div>
   <div>
     <div class="sl rv">Fitness System</div>
     <div class="st rv">BODY<br><span class="p">GOALS.</span></div>
@@ -481,7 +537,7 @@ nav{position:fixed;top:0;left:0;right:0;padding:26px 48px;display:flex;justify-c
 
 <!-- 06 ROADMAP -->
 <section class="sec" id="roadmap">
-  <div class="sn">( 06 )</div>
+  <div class="sn">( 07 )</div>
   <div>
     <div class="sl rv">6–12 Month</div>
     <div class="st rv">CAREER<br><span class="p">ROADMAP.</span></div>
@@ -518,7 +574,7 @@ nav{position:fixed;top:0;left:0;right:0;padding:26px 48px;display:flex;justify-c
 
 <!-- 07 RULES -->
 <section class="sec" id="rules">
-  <div class="sn">( 07 )</div>
+  <div class="sn">( 08 )</div>
   <div>
     <div class="sl rv">Non-negotiable</div>
     <div class="st rv">THE<br><span class="p">RULES.</span></div>
@@ -566,6 +622,9 @@ function upCD(){
   document.getElementById('wdays').textContent=wd;
 }
 upCD();
+
+// CTF countdown (27 มิ.ย. 2026)
+(function(){var el=document.getElementById('ctfcd');if(el){var t=new Date(2026,5,27).getTime();el.textContent=Math.max(0,Math.ceil((t-Date.now())/86400000));}})();
 
 // localStorage helpers
 function load(k){try{return JSON.parse(localStorage.getItem(k)||'{}')}catch(e){return{}}}
