@@ -328,7 +328,7 @@ nav{position:fixed;top:0;left:0;right:0;padding:26px 48px;display:flex;justify-c
   <div>
     <div class="sl rv">June Sprint</div>
     <div class="st rv">SUMMER<br><span class="p">GRIND.</span></div>
-    <p class="sb rv">3 เป้าหมายขนานกันในเดือนมิถุนายน — Cert เรียนแทรกตอนทำงาน, Pentest ไต่ระดับทุกเย็น, แล้วลงสนามแข่ง CTF จริง 27 มิ.ย.</p>
+    <p class="sb rv">เป้าเดียวของสัปดาห์นี้ = ลงแข่ง NCSA × CISCO CTF ให้ได้ · แบ่งเป็น 2 เฟส — เก็บ Cert ก่อน แล้วค่อยฝึก skill จริงไปแข่ง</p>
 
     <!-- CTF countdown -->
     <div class="cd rv">
@@ -337,42 +337,39 @@ nav{position:fixed;top:0;left:0;right:0;padding:26px 48px;display:flex;justify-c
         <div class="cdd">วันจนถึง NCSA × CISCO CTF · 27 มิถุนายน 2026 · online 09:00–13:00</div>
       </div>
     </div>
-    <p class="sb rv" style="color:var(--yellow);margin-top:14px;max-width:560px">⚠️ สมัครให้เสร็จก่อน 20 มิ.ย. (วันปิดรับ) — รางวัลรวม 50,000 บาท · แนว Cisco Certified in Ethical Hacking</p>
+    <p class="sb rv" style="color:var(--yellow);margin-top:14px;max-width:600px">🔒 <b>ด่านบังคับ:</b> ต้องเรียนจบคอร์ส Cisco Ethical Hacker บน NetAcad → ได้ Certificate (PDF) → upload ในฟอร์มสมัคร · <b>ปิดรับ 20 มิ.ย.</b> · รางวัลรวม 50,000 บาท</p>
 
-    <!-- Track 1: AWS Cert -->
-    <div class="rv">
-      <div class="road-phase">
-        <div class="rh">🎓 Track 1 · AWS CLF-C02 <span style="color:var(--muted2);font-weight:400;font-size:12px">— เรียนตอนทำงาน / พักเที่ยง (ไม่กินเวลาเย็น)</span></div>
-        <div class="ri">Day 1–5 (13–17 มิ.ย.) — เรียนครบ 4 Domain ทีละวัน วันละ ~1 ชม.</div>
-        <div class="ri">Day 6–7 (18–19 มิ.ย.) — ทำข้อสอบจริง 200 ข้อ · เป้า mock test > 85%</div>
-        <div class="ri">~20 มิ.ย. — จองสอบ Pearson VUE ถ้าผ่านเกณฑ์ (cert ข้าม GPA 2.66)</div>
-      </div>
+    <!-- PHASE A: Cisco cert rush -->
+    <div class="check-group rv" data-key="cisco">
+      <div class="check-phase">🟥 เฟส A · เก็บ Cert (13–19 มิ.ย.) — ไถให้จบ ไม่เน้นเข้าใจลึก</div>
+      <label class="check-row"><input type="checkbox" data-id="ch-5"><span class="cl">Module 5 · Exploiting Wired/Wireless (เริ่ม 61%)</span></label>
+      <label class="check-row"><input type="checkbox" data-id="ch-4"><span class="cl">Module 4 · Social Engineering (47%)</span></label>
+      <label class="check-row"><input type="checkbox" data-id="ch-1"><span class="cl">Module 1 · Intro to Ethical Hacking (37%)</span></label>
+      <label class="check-row"><input type="checkbox" data-id="ch-2"><span class="cl">Module 2 · Planning &amp; Scoping (27%)</span></label>
+      <label class="check-row"><input type="checkbox" data-id="ch-3"><span class="cl">Module 3 · Info Gathering &amp; Vuln Scanning (22%)</span></label>
+      <label class="check-row"><input type="checkbox" data-id="ch-6"><span class="cl">Module 6 · Exploiting App-Based Vuln (16%)</span></label>
+      <label class="check-row"><input type="checkbox" data-id="ch-7"><span class="cl">Module 7 · Cloud / Mobile / IoT Security (0%)</span></label>
+      <label class="check-row"><input type="checkbox" data-id="ch-8"><span class="cl">Module 8 · Post-Exploitation (0%)</span></label>
+      <label class="check-row"><input type="checkbox" data-id="ch-9"><span class="cl">Module 9 · Reporting &amp; Communication (0%)</span></label>
+      <label class="check-row"><input type="checkbox" data-id="ch-10"><span class="cl">Module 10 · Tools &amp; Code Analysis (0%)</span></label>
+      <label class="check-row"><input type="checkbox" data-id="ch-cap"><span class="cl">Final Capstone Activity + End of Course Survey</span></label>
+      <label class="check-row"><input type="checkbox" data-id="ch-exam"><span class="cl">🔴 Course Final Exam — ต้องสอบผ่าน (ติว cram กับ Claude ก่อน)</span></label>
+      <label class="check-row"><input type="checkbox" data-id="ch-cert"><span class="cl">⬇️ โหลด Certificate PDF → upload ฟอร์ม → ✅ สมัครเสร็จ</span></label>
     </div>
 
-    <!-- Track 2: Pentest Ladder -->
-    <div class="check-group rv" data-key="pentest">
-      <div class="check-phase">⚔️ Track 2 · Pentest Ladder — 1 ห้อง/วัน · จ–ส (TryHackMe → HTB)</div>
-      <label class="check-row"><input type="checkbox" data-id="pt-1"><span class="cl">Pickle Rick (THM · Easy) — เริ่มวันนี้ 12 มิ.ย. 🥒</span></label>
-      <label class="check-row"><input type="checkbox" data-id="pt-2"><span class="cl">Basic Pentesting (THM · Easy)</span></label>
-      <label class="check-row"><input type="checkbox" data-id="pt-3"><span class="cl">RootMe (THM · Easy) — upload bypass + privesc</span></label>
-      <label class="check-row"><input type="checkbox" data-id="pt-4"><span class="cl">Vulnversity (THM · Easy) — nmap + enum</span></label>
-      <label class="check-row"><input type="checkbox" data-id="pt-5"><span class="cl">Blue / EternalBlue (THM · Easy) — Metasploit แรก</span></label>
-      <label class="check-row"><input type="checkbox" data-id="pt-6"><span class="cl">Kenobi (THM · Easy) — SMB + SUID privesc</span></label>
-      <label class="check-row"><input type="checkbox" data-id="pt-7"><span class="cl">Steel Mountain (THM · Medium) — Windows privesc</span></label>
-      <label class="check-row"><input type="checkbox" data-id="pt-8"><span class="cl">THM Path: Jr Penetration Tester (เก็บต่อเนื่อง)</span></label>
-      <label class="check-row"><input type="checkbox" data-id="pt-9"><span class="cl">HTB Starting Point — Tier 0–2 (ย้ายมา HTB)</span></label>
-      <label class="check-row"><input type="checkbox" data-id="pt-10"><span class="cl">HTB box แรก (Easy retired) — Lame / Blue</span></label>
-    </div>
-
-    <!-- Track 3: Internship knowledge -->
+    <!-- PHASE B: CTF skill prep -->
     <div class="rv">
       <div class="road-phase g">
-        <div class="rh">🏢 Track 3 · ความรู้จากที่ฝึกงาน (จ–ศ ระหว่างงาน)</div>
-        <div class="ri">จด tool / process ใหม่ที่เจอแต่ละวันลง Obsidian vault "Security-Notes"</div>
-        <div class="ri">ต่อยอด ELK / Log Analysis ที่พี่ไบรท์มอบหมาย → เชื่อมกับ pentest ที่บ้าน</div>
-        <div class="ri">เก็บ 1 คำถามดี ๆ ถามพี่เลี้ยงทุกวัน</div>
+        <div class="rh">🟩 เฟส B · ฝึก Skill จริงไปแข่ง (20–27 มิ.ย.) <span style="color:var(--muted2);font-weight:400;font-size:12px">— Claude วางแผน hands-on หลังได้ cert</span></div>
+        <div class="ri">🌐 Web — SQLi · XSS · IDOR (มีพื้นแล้ว) + Burp Suite</div>
+        <div class="ri">🔐 Crypto · 🔍 Forensics · ⚙️ Reverse/Pwn · 🕵️ OSINT</div>
+        <div class="ri">ติดตั้ง toolkit (Burp · CyberChef · Ghidra) + ฝึกโจทย์ CTF เก่าจริง</div>
+        <div class="ri">27 มิ.ย. 09:00–13:00 — ลงสนามแข่ง 🚩</div>
       </div>
     </div>
+
+    <!-- Paused this week -->
+    <p class="sb rv" style="color:var(--muted2);margin-top:18px;font-size:13px">⏸️ พักไว้สัปดาห์นี้ (กลับมาทำหลัง CTF): AWS CLF-C02 · Pentest ladder TryHackMe→HTB</p>
   </div>
 </section>
 
@@ -393,12 +390,12 @@ nav{position:fixed;top:0;left:0;right:0;padding:26px 48px;display:flex;justify-c
         <div class="trow rv"><div class="ttime">06:45–08:00</div><div class="tact">อาบน้ำ · แต่งตัว · อาหารเช้า</div><div class="tdesc">โปรตีนก่อน — ไข่, นม, โยเกิร์ต</div></div>
         <div class="trow rv"><div class="ttime">08:00–09:00</div><div class="tact">🚇 เดินทาง · The Tree Rio → Silom Edge</div><div class="tdesc">ฟัง podcast security</div></div>
         <div class="trow rv"><div class="ttime">09:00–12:00</div><div class="tact">🏢 ฝึกงาน รอบเช้า</div><div class="tdesc">Observe + งานที่ได้รับมอบหมาย</div></div>
-        <div class="trow rv"><div class="ttime">12:00–13:00</div><div class="tact">🍱 พักเที่ยง + 🎓 AWS cert</div><div class="tdesc">กินเสร็จเปิด OpenExamPrep 15–20 ข้อ / อ่าน crash course (เบาๆ)</div></div>
+        <div class="trow rv"><div class="ttime">12:00–13:00</div><div class="tact">🍱 พักเที่ยง + 🟥 Cisco cert</div><div class="tdesc">กินเสร็จเปิด NetAcad ไถ module ต่อ (สัปดาห์นี้เร่งเก็บ cert)</div></div>
         <div class="trow rv"><div class="ttime">13:00–18:00</div><div class="tact">🏢 ฝึกงาน รอบบ่าย</div><div class="tdesc">จดบันทึก tool + คำถามพี่เลี้ยง</div></div>
         <div class="trow rv"><div class="ttime">18:00–19:15</div><div class="tact">🚇 เดินทางกลับ</div><div class="tdesc">ปิดสมองงาน ฟังเพลง</div></div>
         <div class="trow rv"><div class="ttime">19:15–20:15</div><div class="tact">🏋️ ออกกำลังกาย</div><div class="tdesc">ตาม Weekly Plan — ถ้าเหนื่อยมาก → walking 20 นาที</div></div>
         <div class="trow rv"><div class="ttime">20:15–21:00</div><div class="tact">🍽️ อาหารเย็น</div><div class="tdesc">โปรตีน + คาร์บ ห้ามข้ามมื้อ</div></div>
-        <div class="trow rv"><div class="ttime">21:00–22:00</div><div class="tact">⚔️ Pentest 1 ห้อง <span style="color:var(--pink);font-size:12px;">จ–ส ทุกวัน</span></div><div class="tdesc">THM ไต่ไป HTB · จด writeup ลง Obsidian · อา. = พักจริงๆ ห้าม grind</div></div>
+        <div class="trow rv"><div class="ttime">21:00–22:00</div><div class="tact">🟥 Cisco cert ต่อ <span style="color:var(--pink);font-size:12px;">ถึง 19 มิ.ย.</span></div><div class="tdesc">ไถ module + Final Exam · หลังได้ cert → เฟส B ฝึกแข่ง / กลับมา pentest</div></div>
         <div class="trow rv"><div class="ttime">22:00–22:30</div><div class="tact">🌙 Wind down · Daily Log</div><div class="tdesc">ทำอะไร เรียนอะไร คำถามพรุ่งนี้</div></div>
         <div class="trow rv"><div class="ttime">22:30</div><div class="tact">😴 นอน ≥ 7.5 ชม.</div><div class="tdesc">non-negotiable</div></div>
       </div>
